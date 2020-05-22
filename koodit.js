@@ -3,6 +3,10 @@ window.onload = function () {
     // Lista oikeista tuotteista
     var lista = [];
 
+    var henkilokunta = false;
+
+    document.getElementById("ale").style.display="none";
+
     /* Laskee  */
     let laske = document.getElementById("laske_kuitti");
     laske.addEventListener("click", laske_kuitti, false);
@@ -53,10 +57,13 @@ window.onload = function () {
                         hinta: rivi[i].substring(rivi[i].indexOf('     ')).trim()
                     }
 
-                    // Lisää pantin edellisen tuotteen hintaan
-                    if (tuotteen_tiedot.tuote.includes("PANTTI")) {
-                        lista[lista.length-1].hinta = +lista[lista.length-1].hinta + +tuotteen_tiedot.hinta;
-                    }
+                    if (henkilokunta == false) {
+                        document.getElementById("ale").style.visibility="visible";
+                        // Lisää pantin edellisen tuotteen hintaan
+                        if (tuotteen_tiedot.tuote.includes("PANTTI")) {
+                            lista[lista.length-1].hinta = +lista[lista.length-1].hinta + +tuotteen_tiedot.hinta;
+                        }
+                    } 
 
                     // Lisää alennus edellisen tuotteen hintaan
                     if (tuotteen_tiedot.tuote.includes("ALENNUS")) {
@@ -64,9 +71,16 @@ window.onload = function () {
                         lista[lista.length-1].hinta = (+lista[lista.length-1].hinta - +parseFloat(tuotteen_tiedot.hinta)).toFixed(2);
                     }
 
-                    // Jos on tyhjät tiedot tuotteessa ja hinnassa, älä lisää
-                    if (tuotteen_tiedot.tuote !== "" && !tuotteen_tiedot.tuote.includes("PANTTI") && !tuotteen_tiedot.tuote.includes("ALENNUS") && !tuotteen_tiedot.hinta.includes("EUR/KG") && !tuotteen_tiedot.hinta.includes("EUR/KPL")) {
-                        lista.push(tuotteen_tiedot)
+                    if (henkilokunta == false) {
+                        // Jos on tyhjät tiedot tuotteessa ja hinnassa, älä lisää
+                        if (tuotteen_tiedot.tuote !== "" && !tuotteen_tiedot.tuote.includes("PANTTI") && !tuotteen_tiedot.tuote.includes("ALENNUS") && !tuotteen_tiedot.hinta.includes("EUR/KG") && !tuotteen_tiedot.hinta.includes("EUR/KPL")) {
+                            lista.push(tuotteen_tiedot)
+                        }
+                    } else {
+                        // Jos on tyhjät tiedot tuotteessa ja hinnassa, älä lisää
+                        if (tuotteen_tiedot.tuote !== "" && !tuotteen_tiedot.tuote.includes("ALENNUS") && !tuotteen_tiedot.hinta.includes("EUR/KG") && !tuotteen_tiedot.hinta.includes("EUR/KPL")) {
+                            lista.push(tuotteen_tiedot)
+                        }
                     }
                 }
 
@@ -78,13 +92,29 @@ window.onload = function () {
                     rivi_elementit[rivi].remove();
                 }
 
-                for (var taulukko = 0; taulukko < lista.length; taulukko++) {
-                    $("#pdf-text").append("<tr id=" + taulukko + ">");
-                    $("#" + taulukko).append("<td id=tuote" + taulukko + ">" + lista[taulukko].tuote + "</td>");
-                    $("#" + taulukko).append("<td>"+ lista[taulukko].hinta + "</td>");
-                    $("#" + taulukko).append("<td><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "0") + "> <label for=radio" + (taulukko + "0") + ">Kim" + "</p>" + 
-                    "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "1") + "> <label for=radio" + (taulukko + "1") + "> Mari" + "</p>" + 
-                    "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "2") + "> <label for=radio" + (taulukko + "2") + "> Yhteinen" + "</p>" + "</input></td>" + "</tr>");
+                if (henkilokunta == false) {
+                    for (var taulukko = 0; taulukko < lista.length; taulukko++) {
+                        $("#pdf-text").append("<tr id=" + taulukko + ">");
+                        $("#" + taulukko).append("<td id=tuote" + taulukko + ">" + lista[taulukko].tuote + "</td>");
+                        $("#" + taulukko).append("<td>"+ lista[taulukko].hinta + "</td>");
+                        $("#" + taulukko).append("<td><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "0") + "> <label for=radio" + (taulukko + "0") + ">Kim" + "</p>" + 
+                        "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "1") + "> <label for=radio" + (taulukko + "1") + "> Mari" + "</p>" + 
+                        "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "2") + "> <label for=radio" + (taulukko + "2") + "> Yhteinen" + "</p>" + "</input></td>" + "</tr>");
+                    }
+                } else {
+                    for (var taulukko = 0; taulukko < lista.length; taulukko++) {
+                        $("#pdf-text").append("<tr id=" + taulukko + ">");
+                        $("#" + taulukko).append("<td id=tuote" + taulukko + ">" + lista[taulukko].tuote + "</td>");
+                        $("#" + taulukko).append("<td>"+ lista[taulukko].hinta + "</td>");
+                        $("#" + taulukko).append("<td><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "0") + "> <label for=radio" + (taulukko + "0") + ">Kim" + "</p>" + 
+                        "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "1") + "> <label for=radio" + (taulukko + "1") + "> Mari" + "</p>" + 
+                        "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "2") + "> <label for=radio" + (taulukko + "2") + "> Yhteinen" + "</p>" + "</input></td>" + "</tr>");
+                        $("#" + taulukko).append("<td><p><input value=0 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "0") + "> <label for=ale" + (taulukko + "0") + ">Ei alennusta" + "</p>" + 
+                        "</input><p><input value=0.03 checked=true type=radio name=ale" + taulukko + " id=ale" + (taulukko + "1") + "> <label for=ale" + (taulukko + "1") + "> 3%" + "</p>" + 
+                        "</input><p><input value=0.08 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "2") + "> <label for=ale" + (taulukko + "2") + "> 8%" + "</p>" + "</input>" + 
+                        "<p><input value=0.10 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "3") + "> <label for=ale" + (taulukko + "3") + "> 10%" + "</p>" + "</input>" + 
+                        "<p><input value=0.15 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "4") + "> <label for=ale" + (taulukko + "4") + ">15%" + "</p>" + "</td></tr>");
+                    }
                 }
             });
         });
@@ -107,6 +137,14 @@ window.onload = function () {
                 pdfPage.getTextContent().then(function (textContent) {
                     var textItems = textContent.items;
                     var finalString = "";
+
+                    if (textItems.find(element => element.str.includes('HENKILÖKUNTA-ALE'))) {
+                        henkilokunta = true;
+                        document.getElementById("ale").style.display="table-cell";
+                    } else {
+                        henkilokunta = false;
+                        document.getElementById("ale").style.display="none";
+                    }
 
                     // Concatenate the string of the item to the final string
                     for (var i = 5; i < textItems.length; i++) {
@@ -140,6 +178,7 @@ window.onload = function () {
         for (let i = 0; i < lista.length; i++) {
             if (lista[i].tuote == document.getElementById("tuote" + i).textContent) {
                var valittu = document.getElementsByName('radio'+ i);
+               var valittuAle = document.getElementsByName('ale'+ i);
                
                for(let radiolista = 0; radiolista < valittu.length; radiolista++) { 
                    if(valittu[radiolista].checked) {
@@ -147,21 +186,45 @@ window.onload = function () {
                            if (lista[i].tuote.includes('PULLOPALAUTUS')) {
                                Kimin_osuus = Kimin_osuus - +parseFloat(lista[i].hinta);
                            } else {
-                               Kimin_osuus = Kimin_osuus + +lista[i].hinta;
+                               if (henkilokunta == true) {
+                                   for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
+                                        if(valittuAle[aleprosenttilista].checked) { 
+                                            Kimin_osuus = Kimin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                        }
+                                    }
+                               } else {
+                                   Kimin_osuus = Kimin_osuus + +lista[i].hinta;
+                               }
                            }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Mari') {
                         if (lista[i].tuote.includes('PULLOPALAUTUS')) {
                             Marin_osuus = Marin_osuus - +parseFloat(lista[i].hinta);
                         } else {
-                            Marin_osuus = Marin_osuus + +lista[i].hinta;
+                            if (henkilokunta == true) {
+                                for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
+                                    if(valittuAle[aleprosenttilista].checked) { 
+                                        Marin_osuus = Marin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                    }
+                                }
+                            } else {
+                                Marin_osuus = Marin_osuus + +lista[i].hinta;
+                            }
                         }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Yhteinen') {
                         if (lista[i].tuote.includes('PULLOPALAUTUS')) {
                             Yhteinen_osuus = Yhteinen_osuus - +parseFloat(lista[i].hinta);
                         } else {
-                            Yhteinen_osuus = Yhteinen_osuus + +lista[i].hinta;
+                            if (henkilokunta == true) {
+                                for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
+                                    if(valittuAle[aleprosenttilista].checked) { 
+                                       Yhteinen_osuus = Yhteinen_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                    }
+                                }
+                            } else {
+                                Yhteinen_osuus = Yhteinen_osuus + +lista[i].hinta;
+                            }
                         }
                        }
                    }
