@@ -1,0 +1,25 @@
+<html lang="fi">
+<head>
+    <meta charset="utf-8">
+
+    <title>Kuitti</title>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.3.200/build/pdf.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="koodit.js"></script>
+    <link rel="StyleSheet" href="tyylit.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <input type="file" accept=".pdf" id="pdf-file">
+    <table id="pdf-text">
+        <tr>
+            <th>Tuote</th>
+            <th>Hinta</th>
+            <th>Kenen</th>
+        </tr>
+    </table>
+    <button name="laske" id="laske_kuitti">Laske</button>
+    <div id="tulos">
+    </div>
+</body>
+</html>
