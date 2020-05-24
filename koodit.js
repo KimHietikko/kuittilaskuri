@@ -109,7 +109,7 @@ window.onload = function () {
                         $("#" + taulukko).append("<td><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "0") + "> <label for=radio" + (taulukko + "0") + ">Kim" + "</p>" + 
                         "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "1") + "> <label for=radio" + (taulukko + "1") + "> Mari" + "</p>" + 
                         "</input><p><input type=radio name=radio" + taulukko + " id=radio" + (taulukko + "2") + "> <label for=radio" + (taulukko + "2") + "> Yhteinen" + "</p>" + "</input></td>" + "</tr>");
-                        $("#" + taulukko).append("<td><p><input value=0 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "0") + "> <label for=ale" + (taulukko + "0") + ">Ei alennusta" + "</p>" + 
+                        $("#" + taulukko).append("<td><p><input value=0 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "0") + "> <label for=ale" + (taulukko + "0") + ">Ei" + "</p>" + 
                         "</input><p><input value=0.03 checked=true type=radio name=ale" + taulukko + " id=ale" + (taulukko + "1") + "> <label for=ale" + (taulukko + "1") + "> 3%" + "</p>" + 
                         "</input><p><input value=0.08 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "2") + "> <label for=ale" + (taulukko + "2") + "> 8%" + "</p>" + "</input>" + 
                         "<p><input value=0.10 type=radio name=ale" + taulukko + " id=ale" + (taulukko + "3") + "> <label for=ale" + (taulukko + "3") + "> 10%" + "</p>" + "</input>" + 
@@ -171,9 +171,11 @@ window.onload = function () {
         var Kimin_osuus = 0;
         var Marin_osuus = 0;
         var Yhteinen_osuus = 0;
+        var Yhteensä = 0;
 
         $('#Kim_osuus').remove();
         $('#Mari_osuus').remove();
+        $('#Yhteensa').remove();
 
         for (let i = 0; i < lista.length; i++) {
             if (lista[i].tuote == document.getElementById("tuote" + i).textContent) {
@@ -234,9 +236,11 @@ window.onload = function () {
 
         Kimin_osuus = (Kimin_osuus + (Yhteinen_osuus/2)).toFixed(2);
         Marin_osuus = (Marin_osuus + (Yhteinen_osuus/2)).toFixed(2);
+        Yhteensä = Kimin_osuus + Marin_osuus;
 
         $("#tulos").append("<p id=Kim_osuus>" + "Kimin osuus: " + Kimin_osuus + "</p>");
         $("#tulos").append("<p id=Mari_osuus>" + "Marin osuus: " + Marin_osuus + "</p>");
+        $("#tulos").append("<p id=Yhteensa>" + "Kimin osuus: " + Yhteensä + "</p>");
 
         console.log(Kimin_osuus);
         console.log(Marin_osuus);
