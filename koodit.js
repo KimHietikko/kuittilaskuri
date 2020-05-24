@@ -30,6 +30,7 @@ window.onload = function () {
 
         $('#Kim_osuus').remove();
         $('#Mari_osuus').remove();
+        $('#Yhteensa').remove();
 
         pdfjsLib.getDocument(typedarray).then(function (pdf) {
             var pdfDocument = pdf;
