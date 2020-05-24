@@ -171,7 +171,7 @@ window.onload = function () {
         var Kimin_osuus = 0;
         var Marin_osuus = 0;
         var Yhteinen_osuus = 0;
-        var Yhteensä = 0;
+        var Yhteensa = 0;
 
         $('#Kim_osuus').remove();
         $('#Mari_osuus').remove();
@@ -236,11 +236,11 @@ window.onload = function () {
 
         Kimin_osuus = (Kimin_osuus + (Yhteinen_osuus/2)).toFixed(2);
         Marin_osuus = (Marin_osuus + (Yhteinen_osuus/2)).toFixed(2);
-        Yhteensä = Kimin_osuus + Marin_osuus;
+        Yhteensa = +Kimin_osuus + +Marin_osuus;
 
         $("#tulos").append("<p id=Kim_osuus>" + "Kimin osuus: " + Kimin_osuus + "</p>");
         $("#tulos").append("<p id=Mari_osuus>" + "Marin osuus: " + Marin_osuus + "</p>");
-        $("#tulos").append("<p id=Yhteensa>" + "Kimin osuus: " + Yhteensä + "</p>");
+        $("#tulos").append("<p id=Yhteensa>" + "Yhteensä: " + Yhteensa + "</p>");
 
         console.log(Kimin_osuus);
         console.log(Marin_osuus);
