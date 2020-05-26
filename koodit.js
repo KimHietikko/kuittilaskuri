@@ -195,7 +195,7 @@ window.onload = function () {
                                             Kimin_osuus = Kimin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                         }
                                     }
-                               } else {
+                               } else if (!lista[i].tuote.includes('PULLOPALAUTUS')){
                                    Kimin_osuus = Kimin_osuus + +lista[i].hinta;
                                }
                            }
@@ -210,7 +210,7 @@ window.onload = function () {
                                         Marin_osuus = Marin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else {
+                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS')) {
                                 Marin_osuus = Marin_osuus + +lista[i].hinta;
                             }
                         }
@@ -225,7 +225,7 @@ window.onload = function () {
                                        Yhteinen_osuus = Yhteinen_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else {
+                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS')) {
                                 Yhteinen_osuus = Yhteinen_osuus + +lista[i].hinta;
                             }
                         }
@@ -237,7 +237,7 @@ window.onload = function () {
 
         Kimin_osuus = (Kimin_osuus + (Yhteinen_osuus/2)).toFixed(2);
         Marin_osuus = (Marin_osuus + (Yhteinen_osuus/2)).toFixed(2);
-        Yhteensa = +Kimin_osuus + +Marin_osuus;
+        Yhteensa = (+Kimin_osuus + +Marin_osuus).toFixed(2);
 
         $("#tulos").append("<p id=Kim_osuus>" + "Kimin osuus: " + Kimin_osuus + "</p>");
         $("#tulos").append("<p id=Mari_osuus>" + "Marin osuus: " + Marin_osuus + "</p>");
