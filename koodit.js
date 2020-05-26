@@ -191,11 +191,11 @@ window.onload = function () {
                            } else {
                                if (henkilokunta == true) {
                                    for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
-                                        if(valittuAle[aleprosenttilista].checked && !lista[i].tuote.includes('PULLOPALAUTUS')) { 
+                                        if(valittuAle[aleprosenttilista].checked) { 
                                             Kimin_osuus = Kimin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                         }
                                     }
-                               } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false){
+                               } else {
                                    Kimin_osuus = Kimin_osuus + +lista[i].hinta;
                                }
                            }
@@ -206,11 +206,11 @@ window.onload = function () {
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
-                                    if(valittuAle[aleprosenttilista].checked && !lista[i].tuote.includes('PULLOPALAUTUS')) { 
+                                    if(valittuAle[aleprosenttilista].checked) { 
                                         Marin_osuus = Marin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false) {
+                            } else {
                                 Marin_osuus = Marin_osuus + +lista[i].hinta;
                             }
                         }
@@ -221,11 +221,11 @@ window.onload = function () {
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
-                                    if(valittuAle[aleprosenttilista].checked && !lista[i].tuote.includes('PULLOPALAUTUS')) { 
+                                    if(valittuAle[aleprosenttilista].checked) { 
                                        Yhteinen_osuus = Yhteinen_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false) {
+                            } else {
                                 Yhteinen_osuus = Yhteinen_osuus + +lista[i].hinta;
                             }
                         }
