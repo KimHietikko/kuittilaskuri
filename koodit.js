@@ -195,7 +195,7 @@ window.onload = function () {
                                             Kimin_osuus = Kimin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                         }
                                     }
-                               } else if (!lista[i].tuote.includes('PULLOPALAUTUS')){
+                               } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false){
                                    Kimin_osuus = Kimin_osuus + +lista[i].hinta;
                                }
                            }
@@ -210,7 +210,7 @@ window.onload = function () {
                                         Marin_osuus = Marin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS')) {
+                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false) {
                                 Marin_osuus = Marin_osuus + +lista[i].hinta;
                             }
                         }
@@ -225,7 +225,7 @@ window.onload = function () {
                                        Yhteinen_osuus = Yhteinen_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
                                     }
                                 }
-                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS')) {
+                            } else if (!lista[i].tuote.includes('PULLOPALAUTUS') && henkilokunta == false) {
                                 Yhteinen_osuus = Yhteinen_osuus + +lista[i].hinta;
                             }
                         }
