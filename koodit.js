@@ -186,8 +186,8 @@ window.onload = function () {
                for(let radiolista = 0; radiolista < valittu.length; radiolista++) { 
                    if(valittu[radiolista].checked) {
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Kim') {
-                           if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                               Kimin_osuus = Kimin_osuus - +parseFloat(lista[i].hinta);
+                           if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                               Kimin_osuus = +Kimin_osuus - +parseFloat(lista[i].hinta);
                            } else {
                                if (henkilokunta == true) {
                                    for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
@@ -201,8 +201,8 @@ window.onload = function () {
                            }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Mari') {
-                        if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                            Marin_osuus = Marin_osuus - +parseFloat(lista[i].hinta);
+                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                            Marin_osuus = +Marin_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
@@ -216,8 +216,8 @@ window.onload = function () {
                         }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Yhteinen') {
-                        if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                            Yhteinen_osuus = Yhteinen_osuus - +parseFloat(lista[i].hinta);
+                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                            Yhteinen_osuus = +Yhteinen_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
@@ -237,7 +237,7 @@ window.onload = function () {
 
         Kimin_osuus = (Kimin_osuus + (Yhteinen_osuus/2)).toFixed(2);
         Marin_osuus = (Marin_osuus + (Yhteinen_osuus/2)).toFixed(2);
-        Yhteensa = +Kimin_osuus + +Marin_osuus;
+        Yhteensa = (+Kimin_osuus + +Marin_osuus).toFixed(2);
 
         $("#tulos").append("<p id=Kim_osuus>" + "Kimin osuus: " + Kimin_osuus + "</p>");
         $("#tulos").append("<p id=Mari_osuus>" + "Marin osuus: " + Marin_osuus + "</p>");
