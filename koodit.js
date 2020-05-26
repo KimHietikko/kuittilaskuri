@@ -187,7 +187,7 @@ window.onload = function () {
                    if(valittu[radiolista].checked) {
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Kim') {
                            if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                               Kimin_osuus = Kimin_osuus - +parseFloat(lista[i].hinta);
+                               Kimin_osuus = +Kimin_osuus - +parseFloat(lista[i].hinta);
                            } else {
                                if (henkilokunta == true) {
                                    for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
@@ -202,7 +202,7 @@ window.onload = function () {
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Mari') {
                         if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                            Marin_osuus = Marin_osuus - +parseFloat(lista[i].hinta);
+                            Marin_osuus = +Marin_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
@@ -217,7 +217,7 @@ window.onload = function () {
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Yhteinen') {
                         if (lista[i].tuote.includes('PULLOPALAUTUS')) {
-                            Yhteinen_osuus = Yhteinen_osuus - +parseFloat(lista[i].hinta);
+                            Yhteinen_osuus = +Yhteinen_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
