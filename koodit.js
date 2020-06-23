@@ -192,7 +192,7 @@ window.onload = function () {
                                if (henkilokunta == true) {
                                    for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
                                         if(valittuAle[aleprosenttilista].checked) { 
-                                            Kimin_osuus = Kimin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                            Kimin_osuus = +Kimin_osuus + +parseFloat((+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value)).toFixed(2));
                                         }
                                     }
                                } else {
@@ -207,7 +207,7 @@ window.onload = function () {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
                                     if(valittuAle[aleprosenttilista].checked) { 
-                                        Marin_osuus = Marin_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                        Marin_osuus = +Marin_osuus + +parseFloat((+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value)).toFixed(2));
                                     }
                                 }
                             } else {
@@ -222,7 +222,7 @@ window.onload = function () {
                             if (henkilokunta == true) {
                                 for(let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) { 
                                     if(valittuAle[aleprosenttilista].checked) { 
-                                       Yhteinen_osuus = Yhteinen_osuus + (+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value));
+                                       Yhteinen_osuus = +Yhteinen_osuus + +parseFloat((+lista[i].hinta - (+lista[i].hinta * valittuAle[aleprosenttilista].value)).toFixed(2));
                                     }
                                 }
                             } else {
