@@ -186,7 +186,7 @@ window.onload = function () {
                for(let radiolista = 0; radiolista < valittu.length; radiolista++) { 
                    if(valittu[radiolista].checked) {
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Kim') {
-                           if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                           if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS') || lista[i].tuote.includes('PULLOPANTTI')) {
                                Kimin_osuus = +Kimin_osuus - +parseFloat(lista[i].hinta);
                            } else {
                                if (henkilokunta == true) {
@@ -201,7 +201,7 @@ window.onload = function () {
                            }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Mari') {
-                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS') || lista[i].tuote.includes('PULLOPANTTI')) {
                             Marin_osuus = +Marin_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
@@ -216,7 +216,7 @@ window.onload = function () {
                         }
                        }
                        if(valittu[radiolista].nextSibling.nextSibling.innerText.trim() === 'Yhteinen') {
-                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS')) {
+                        if (lista[i].tuote.includes('PULLOPALAUTUS') || lista[i].tuote.includes('PULLONPALAUTUS') || lista[i].tuote.includes('PULLOPANTTI')) {
                             Yhteinen_osuus = +Yhteinen_osuus - +parseFloat(lista[i].hinta);
                         } else {
                             if (henkilokunta == true) {
