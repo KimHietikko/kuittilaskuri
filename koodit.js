@@ -61,7 +61,7 @@ window.onload = function () {
                     if (henkilokunta == false) {
                         document.getElementById("ale").style.visibility="visible";
                         // Lisää pantin edellisen tuotteen hintaan
-                        if (tuotteen_tiedot.tuote.includes("PANTTI")) {
+                        if (tuotteen_tiedot.tuote.includes("PANTTI") && !tuotteen_tiedot.tuote.includes("PULLOPANTTI")) {
                             lista[lista.length-1].hinta = +lista[lista.length-1].hinta + +tuotteen_tiedot.hinta;
                         }
                     } 
@@ -75,12 +75,15 @@ window.onload = function () {
                     if (henkilokunta == false) {
                         // Jos on tyhjät tiedot tuotteessa ja hinnassa, älä lisää
                         if (tuotteen_tiedot.tuote !== "" && !tuotteen_tiedot.tuote.includes("PANTTI") && !tuotteen_tiedot.tuote.includes("ALENNUS") && !tuotteen_tiedot.hinta.includes("EUR/KG") && !tuotteen_tiedot.hinta.includes("EUR/KPL")) {
-                            lista.push(tuotteen_tiedot)
+                            lista.push(tuotteen_tiedot);
+                        }
+                        if (tuotteen_tiedot.tuote.includes("PULLOPANTTI")){
+                            lista.push(tuotteen_tiedot);
                         }
                     } else {
                         // Jos on tyhjät tiedot tuotteessa ja hinnassa, älä lisää
                         if (tuotteen_tiedot.tuote !== "" && !tuotteen_tiedot.tuote.includes("ALENNUS") && !tuotteen_tiedot.hinta.includes("EUR/KG") && !tuotteen_tiedot.hinta.includes("EUR/KPL")) {
-                            lista.push(tuotteen_tiedot)
+                            lista.push(tuotteen_tiedot);
                         }
                     }
                 }
