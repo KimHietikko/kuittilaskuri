@@ -296,7 +296,7 @@ window.onload = function () {
 									if (henkilokunta == true) {
 										for (let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) {
 											if (valittuAle[aleprosenttilista].checked) {
-												array.price = +array.price + +parseFloat((+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value).toFixed(2));
+												array.price = +array.price + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
 											}
 										}
 									} else {
@@ -314,24 +314,21 @@ window.onload = function () {
 
 		peopleAndPrices.forEach((person) => {
 			if (person.person === 'Yhteinen') {
-				yhteinenOsuusYhdelle = (person.price / radioButtonPersons).toFixed(2);
-			} else {
-				Yhteensa = Yhteensa + +person.price;
+				yhteinenOsuusYhdelle = person.price / radioButtonPersons;
 			}
 		});
-
-		Yhteensa = Yhteensa.toFixed(2);
 
 		let results = '';
 
 		peopleAndPrices.forEach((person) => {
 			if (person.person !== 'Yhteinen') {
 				person.price = person.price + +yhteinenOsuusYhdelle;
+				Yhteensa = Yhteensa + +person.price;
 				results = results + '<p>' + person.person + ' osuus: ' + person.price.toFixed(2) + '</p>';
 			}
 		});
 
 		$('#tulos').append(results);
-		$('#tulos').append('<p id=Yhteensa>' + 'Yhteensä: ' + Yhteensa + '</p>');
+		$('#tulos').append('<p id=Yhteensa>' + 'Yhteensä: ' + Yhteensa.toFixed(2) + '</p>');
 	}
 };
