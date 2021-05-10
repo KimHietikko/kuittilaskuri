@@ -1,40 +1,41 @@
 <html lang="fi">
-	<head>
-		<meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
 
-		<title>Kuitti</title>
-		<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.3.200/build/pdf.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="koodit.js"></script>
-		<link rel="StyleSheet" href="tyylit.css" type="text/css" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-	</head>
-	<body>
-		<p>Kuinka monelle henkilölle kuitti jaetaan?</p>
-		<div>
-			<input type="radio" id="personsRadioButton2" name="personsRadioButton" value="2" checked />
-			<label for="personsRadioButton2">2</label>
-			<input type="radio" id="personsRadioButton3" name="personsRadioButton" value="3" />
-			<label for="personsRadioButton3">3</label>
-			<input type="radio" id="personsRadioButton4" name="personsRadioButton" value="4" />
-			<label for="personsRadioButton4">4</label>
-			<input type="radio" id="personsRadioButton5" name="personsRadioButton" value="5" />
-			<label for="personsRadioButton5">5</label>
-			<input type="radio" id="personsRadioButton6" name="personsRadioButton" value="6" />
-			<label for="personsRadioButton6">6</label>
-		</div>
+        <title>Kuitti</title>
+        <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.3.200/build/pdf.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="koodit.js"></script>
+        <link rel="StyleSheet" href="tyylit.css" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <p>Kuinka monelle henkilölle kuitti jaetaan?</p>
+        <div class="personsRadioClass">
+            <input type="radio" id="personsRadioButton2" name="personsRadioButton" value="2" checked />
+            <label for="personsRadioButton2">2</label>
+            <input type="radio" id="personsRadioButton3" name="personsRadioButton" value="3" />
+            <label for="personsRadioButton3">3</label>
+            <input type="radio" id="personsRadioButton4" name="personsRadioButton" value="4" />
+            <label for="personsRadioButton4">4</label>
+            <input type="radio" id="personsRadioButton5" name="personsRadioButton" value="5" />
+            <label for="personsRadioButton5">5</label>
+            <input type="radio" id="personsRadioButton6" name="personsRadioButton" value="6" />
+            <label for="personsRadioButton6">6</label>
+        </div>
 
-		<input type="file" accept=".pdf" id="pdf-file" />
-		<table id="pdf-text">
-			<tr>
-				<th>Tuote</th>
-				<th>Hinta</th>
-				<th>Kenen</th>
-				<th id="ale">Ale</th>
-			</tr>
-		</table>
-		<button name="laske" id="laske_kuitti">Laske</button>
-		<button name="tyhjenna" id="tyhjenna_checkbox">Tyhjennä valinnat</button>
-		<div id="tulos"></div>
-	</body>
+        <input class="pdfInput" type="file" accept=".pdf" id="pdf-file" />
+        <table id="pdf-text">
+            <tr>
+                <th>Tuote</th>
+                <th>Hinta</th>
+                <th class="whose">Kenen</th>
+                <th id="ale">Ale</th>
+            </tr>
+        </table>
+        <button class="calculateTap" name="laske" id="laske_kuitti">Laske</button>
+        <button class="emptyCheckboxes" name="tyhjenna" id="tyhjenna_checkbox">Tyhjennä valinnat</button>
+        <div class="personPrices" id="tulos"></div>
+        <canvas id="the-canvas"></canvas>
+    </body>
 </html>
