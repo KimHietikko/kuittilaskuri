@@ -312,7 +312,7 @@ window.onload = function () {
                     if (valittu[radiolista].checked) {
                         peopleAndPrices.forEach(array => {
                             if (valittu[radiolista].nextSibling.nextSibling.innerText.trim() === array.person) {
-                                if (lista[i].hinta.includes('-')) {
+                                if (lista[i].hinta.toString().includes('-')) {
                                     array.price = +array.price - +parseFloat(lista[i].hinta) / checkedBoxes;
                                 } else {
                                     if (henkilokunta == true) {
