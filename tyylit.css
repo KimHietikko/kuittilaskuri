@@ -36,19 +36,19 @@ td p {
 }
 
 .productColumn {
-    width: 200px;
+    width: 150px;
 }
 
 .priceColumn {
-    width: 50px;
+    width: 40px;
 }
 
 .whoseColumn {
-    width: 110px;
+    width: 120px;
 }
 
 .foodOrProductColumn {
-    width: 90px;
+    width: 110px;
 }
 
 .personsRadioClass {
