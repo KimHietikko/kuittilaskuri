@@ -35,7 +35,7 @@ window.onload = function () {
 
             kuitti = [];
 
-            pdfjsLib.getDocument(typedarray).then(function (pdf) {
+            pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
                 var pdfDocument = pdf;
                 var pagesPromises = [];
 
