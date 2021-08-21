@@ -137,7 +137,31 @@ window.onload = function () {
                                 (taulukko + (parseInt(personsRadioButtonValue) + 1).toString()) +
                                 '>Yhteinen</p></input>';
 
-                            $('#' + taulukko).append('<td>' + personsCheckboxesButtonsString + '</td></tr>');
+                            $('#' + taulukko).append('<td>' + personsCheckboxesButtonsString + '</td>');
+
+                            $('#' + taulukko).append(
+                                '<td><p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '1 checked> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '1>Arkinen</p></input>' +
+                                    '<p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '2> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '2>Herkku</p></input>' +
+                                    '<p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '3> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '3>Tavara</p></input></td></tr>'
+                            );
                         }
                     } else {
                         for (var taulukko = 0; taulukko < lista.length; taulukko++) {
@@ -173,7 +197,7 @@ window.onload = function () {
                                 (taulukko + (parseInt(personsRadioButtonValue) + 1).toString()) +
                                 '>Yhteinen</p></input>';
 
-                            $('#' + taulukko).append('<td>' + personsCheckboxesButtonsString + '</td></tr>');
+                            $('#' + taulukko).append('<td>' + personsCheckboxesButtonsString + '</td>');
 
                             $('#' + taulukko).append(
                                 '<td><p><input value=0 type=radio name=ale' +
@@ -206,7 +230,31 @@ window.onload = function () {
                                     (taulukko + '4') +
                                     '> <label for=ale' +
                                     (taulukko + '4') +
-                                    '>15%</p></td></tr>'
+                                    '>15%</p></td>'
+                            );
+
+                            $('#' + taulukko).append(
+                                '<td><p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '1 checked> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '1>Arkinen</p></input>' +
+                                    '<p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '2> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '2>Herkku</p></input>' +
+                                    '<p><input type=radio name=foodOrProduct' +
+                                    taulukko +
+                                    ' id=foodOrProduct' +
+                                    taulukko +
+                                    '3> <label for=foodOrProduct' +
+                                    taulukko +
+                                    '3>Tavara</p></input></td></tr>'
                             );
                         }
                     }
@@ -289,10 +337,13 @@ window.onload = function () {
 
         $('#tulos').empty();
 
+        let radioButtonPersons = $('input[name=personsRadioButton]:checked').val();
+
         for (let i = 0; i < lista.length; i++) {
             if (lista[i].tuote == document.getElementById('tuote' + i).textContent) {
                 var valittu = document.getElementsByName('checkbox' + i);
                 var valittuAle = document.getElementsByName('ale' + i);
+                var valittuLaatu = document.getElementsByName('foodOrProduct' + i);
 
                 let checkedBoxes = 0;
 
@@ -300,7 +351,10 @@ window.onload = function () {
                     if (peopleAndPrices.length < valittu.length) {
                         peopleAndPrices.push({
                             person: valittu[radiolista].nextSibling.nextSibling.innerText.trim(),
-                            price: 0
+                            totalPrice: 0,
+                            totalFood: 0,
+                            totalSweets: 0,
+                            totalProducts: 0
                         });
                     }
                     if (valittu[radiolista].checked) {
@@ -313,16 +367,143 @@ window.onload = function () {
                         peopleAndPrices.forEach(array => {
                             if (valittu[radiolista].nextSibling.nextSibling.innerText.trim() === array.person) {
                                 if (lista[i].hinta.toString().includes('-')) {
-                                    array.price = +array.price - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                    valittuLaatu.forEach(laatu => {
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Arkinen') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalFood = person.totalFood + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalFood = +array.totalFood - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Herkku') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalSweets = person.totalSweets + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalSweets = +array.totalSweets - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Tavara') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalProducts = person.totalProducts + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalProducts = +array.totalProducts - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                    });
+                                    array.totalPrice = +array.totalPrice - +parseFloat(lista[i].hinta) / checkedBoxes;
                                 } else {
                                     if (henkilokunta == true) {
                                         for (let aleprosenttilista = 0; aleprosenttilista < valittuAle.length; aleprosenttilista++) {
                                             if (valittuAle[aleprosenttilista].checked) {
-                                                array.price = +array.price + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
+                                                valittuLaatu.forEach(laatu => {
+                                                    if (laatu.checked && laatu.parentNode.textContent.trim() === 'Arkinen') {
+                                                        if (array.person === 'Yhteinen') {
+                                                            yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                            peopleAndPrices.forEach(person => {
+                                                                if (person.person !== 'Yhteinen') {
+                                                                    person.totalFood = person.totalFood + +yhteinenOsuusYhdelle;
+                                                                }
+                                                            });
+                                                        } else {
+                                                            array.totalFood = +array.totalFood + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
+                                                        }
+                                                    }
+                                                    if (laatu.checked && laatu.parentNode.textContent.trim() === 'Herkku') {
+                                                        if (array.person === 'Yhteinen') {
+                                                            yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                            peopleAndPrices.forEach(person => {
+                                                                if (person.person !== 'Yhteinen') {
+                                                                    person.totalSweets = person.totalSweets + +yhteinenOsuusYhdelle;
+                                                                }
+                                                            });
+                                                        } else {
+                                                            array.totalSweets =
+                                                                +array.totalSweets + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
+                                                        }
+                                                    }
+                                                    if (laatu.checked && laatu.parentNode.textContent.trim() === 'Tavara') {
+                                                        if (array.person === 'Yhteinen') {
+                                                            yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                            peopleAndPrices.forEach(person => {
+                                                                if (person.person !== 'Yhteinen') {
+                                                                    person.totalProducts = person.totalProducts + +yhteinenOsuusYhdelle;
+                                                                }
+                                                            });
+                                                        } else {
+                                                            array.totalProducts =
+                                                                +array.totalProducts + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
+                                                        }
+                                                    }
+                                                });
+
+                                                array.totalPrice = +array.totalPrice + +parseFloat(+lista[i].hinta - +(lista[i].hinta / checkedBoxes) * valittuAle[aleprosenttilista].value);
                                             }
                                         }
                                     } else {
-                                        array.price = +array.price + +(lista[i].hinta / checkedBoxes);
+                                        valittuLaatu.forEach(laatu => {
+                                            if (laatu.checked && laatu.parentNode.textContent.trim() === 'Arkinen') {
+                                                if (array.person === 'Yhteinen') {
+                                                    yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                    peopleAndPrices.forEach(person => {
+                                                        if (person.person !== 'Yhteinen') {
+                                                            person.totalFood = person.totalFood + +yhteinenOsuusYhdelle;
+                                                        }
+                                                    });
+                                                } else {
+                                                    array.totalFood = +array.totalFood + +(lista[i].hinta / checkedBoxes);
+                                                }
+                                            }
+                                            if (laatu.checked && laatu.parentNode.textContent.trim() === 'Herkku') {
+                                                if (array.person === 'Yhteinen') {
+                                                    yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                    peopleAndPrices.forEach(person => {
+                                                        if (person.person !== 'Yhteinen') {
+                                                            person.totalSweets = person.totalSweets + +yhteinenOsuusYhdelle;
+                                                        }
+                                                    });
+                                                } else {
+                                                    array.totalSweets = +array.totalSweets + +(lista[i].hinta / checkedBoxes);
+                                                }
+                                            }
+                                            if (laatu.checked && laatu.parentNode.textContent.trim() === 'Tavara') {
+                                                if (array.person === 'Yhteinen') {
+                                                    yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                    peopleAndPrices.forEach(person => {
+                                                        if (person.person !== 'Yhteinen') {
+                                                            person.totalProducts = person.totalProducts + +yhteinenOsuusYhdelle;
+                                                        }
+                                                    });
+                                                } else {
+                                                    array.totalProducts = +array.totalProducts + +(lista[i].hinta / checkedBoxes);
+                                                }
+                                            }
+                                        });
+
+                                        array.totalPrice = +array.totalPrice + +(lista[i].hinta / checkedBoxes);
                                     }
                                 }
                             }
@@ -332,11 +513,9 @@ window.onload = function () {
             }
         }
 
-        let radioButtonPersons = $('input[name=personsRadioButton]:checked').val();
-
         peopleAndPrices.forEach(person => {
             if (person.person === 'Yhteinen') {
-                yhteinenOsuusYhdelle = person.price / radioButtonPersons;
+                yhteinenOsuusYhdelle = person.totalPrice / radioButtonPersons;
             }
         });
 
@@ -344,9 +523,30 @@ window.onload = function () {
 
         peopleAndPrices.forEach(person => {
             if (person.person !== 'Yhteinen') {
-                person.price = person.price + +yhteinenOsuusYhdelle;
-                Yhteensa = Yhteensa + +person.price;
-                results = results + '<p>' + person.person + ' osuus: ' + person.price.toFixed(2) + '</p>';
+                person.totalPrice = person.totalPrice + +yhteinenOsuusYhdelle;
+                Yhteensa = Yhteensa + +person.totalPrice;
+                results =
+                    results +
+                    '<div><p>' +
+                    person.person +
+                    ' arkiset: ' +
+                    person.totalFood.toFixed(2) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' herkut: ' +
+                    person.totalSweets.toFixed(2) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' tavarat: ' +
+                    person.totalProducts.toFixed(2) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' yhteensä: ' +
+                    person.totalPrice.toFixed(2) +
+                    '</p></div>';
             }
         });
 

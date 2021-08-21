@@ -1,7 +1,10 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+}
+
+tbody {
+    display: inline-block;
 }
 
 td,
@@ -32,8 +35,20 @@ td p {
     padding: 10px;
 }
 
-.whose {
+.productColumn {
     width: 200px;
+}
+
+.priceColumn {
+    width: 50px;
+}
+
+.whoseColumn {
+    width: 110px;
+}
+
+.foodOrProductColumn {
+    width: 90px;
 }
 
 .personsRadioClass {
@@ -47,4 +62,16 @@ td p {
 
 .personPrices {
     margin-top: 70px;
+    display: grid;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        font-size: 14px;
+    }
+
+    td,
+    th {
+        font-size: 11px;
+    }
 }
