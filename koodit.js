@@ -40,6 +40,8 @@ window.onload = function () {
             pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
                 var pdfDocument = pdf;
                 var pagesPromises = [];
+                isCampaign = false;
+                henkilokunta = false;
 
                 for (var i = 0; i < pdf.numPages; i++) {
                     // Required to prevent that i is always the total of pages
