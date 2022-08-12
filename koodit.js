@@ -350,14 +350,14 @@ window.onload = function () {
                     for (var i = 5; i < textItems.length; i++) {
                         var item = textItems[i];
 
-                        if (textItems.find(element => element.str.includes('kampanja'))) {
+                        if (textItems.find(element => element.str.includes('S-Etu kampanja'))) {
                             isCampaign = true;
                         }
 
                         if (!item.str.includes('----------')) {
                             finalString += item.str + '\n';
                         } else {
-                            if (campaignItemsList) {
+                            if (isCampaign) {
                                 campaignItemsList = list_campaign_items(i, textItems);
                             }
 
