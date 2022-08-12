@@ -3,6 +3,8 @@ window.onload = function () {
     var lista = [];
 
     var henkilokunta = false;
+    var campaignItemsList = [];
+    var isCampaign = false;
 
     document.getElementById('ale').style.display = 'none';
 
@@ -71,6 +73,15 @@ window.onload = function () {
                         if (tuotteen_tiedot.tuote.includes('ALENNUS')) {
                             lista[lista.length - 1].tuote = lista[lista.length - 1].tuote.concat(' ALENNUS');
                             lista[lista.length - 1].hinta = (+lista[lista.length - 1].hinta - +parseFloat(tuotteen_tiedot.hinta)).toFixed(2);
+                        }
+
+                        if (isCampaign) {
+                            campaignItemsList.forEach(element => {
+                                if (tuotteen_tiedot.tuote.includes(element.tuote)) {
+                                    tuotteen_tiedot.tuote = tuotteen_tiedot.tuote.concat(' KAMPANJA');
+                                    tuotteen_tiedot.hinta = element.hinta;
+                                }
+                            });
                         }
 
                         if (henkilokunta == false) {
@@ -339,9 +350,17 @@ window.onload = function () {
                     for (var i = 5; i < textItems.length; i++) {
                         var item = textItems[i];
 
+                        if (textItems.find(element => element.str.includes('kampanja'))) {
+                            isCampaign = true;
+                        }
+
                         if (!item.str.includes('----------')) {
                             finalString += item.str + '\n';
                         } else {
+                            if (campaignItemsList) {
+                                campaignItemsList = list_campaign_items(i, textItems);
+                            }
+
                             break;
                         }
                     }
@@ -351,6 +370,27 @@ window.onload = function () {
                 });
             });
         });
+    }
+
+    function list_campaign_items(index, textItems) {
+        let list = [];
+
+        for (var i = index + 3; i < textItems.length; i++) {
+            var item = textItems[i];
+
+            if (!item.str.includes('----------')) {
+                var tuotteen_tiedot = {
+                    tuote: item.str.substring(0, item.str.indexOf('   ')).trim(),
+                    hinta: item.str.substring(item.str.indexOf('   ')).trim().replace(',', '.')
+                };
+
+                list.push(tuotteen_tiedot);
+            } else {
+                break;
+            }
+        }
+
+        return list;
     }
 
     function tyhjenna_checkbox() {
