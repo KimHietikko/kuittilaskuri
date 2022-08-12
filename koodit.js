@@ -77,6 +77,14 @@ window.onload = function () {
                             lista[lista.length - 1].hinta = (+lista[lista.length - 1].hinta - +parseFloat(tuotteen_tiedot.hinta)).toFixed(2);
                         }
 
+                        // Lisää kampanja-alennus edellisen tuotteen hintaan
+                        if (tuotteen_tiedot.tuote.includes('KAMPANJA') && tuotteen_tiedot.hinta.includes('-')) {
+                            lista[lista.length - 1].tuote = lista[lista.length - 1].tuote.concat(' ALENNUS');
+                            lista[lista.length - 1].hinta = (+lista[lista.length - 1].hinta - +parseFloat(tuotteen_tiedot.hinta)).toFixed(2);
+
+                            continue;
+                        }
+
                         if (isCampaign) {
                             campaignItemsList.forEach(element => {
                                 if (tuotteen_tiedot.tuote.includes(element.tuote)) {
@@ -357,7 +365,9 @@ window.onload = function () {
                         }
 
                         if (!item.str.includes('----------')) {
-                            finalString += item.str + '\n';
+                            if (!item.str.includes(':')) {
+                                finalString += item.str + '\n';
+                            }
                         } else {
                             if (isCampaign) {
                                 campaignItemsList = list_campaign_items(i, textItems);
