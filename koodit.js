@@ -392,8 +392,8 @@ window.onload = function () {
 
             if (!item.str.includes('----------')) {
                 var tuotteen_tiedot = {
-                    tuote: item.str.substring(0, item.str.indexOf('   ')).trim(),
-                    hinta: item.str.substring(item.str.indexOf('   ')).trim().replace(',', '.')
+                    tuote: item.str.trim().substring(0, item.str.trim().indexOf('  ')).trim(),
+                    hinta: item.str.trim().substring(item.str.trim().indexOf('  ')).trim().replace(',', '.')
                 };
 
                 list.push(tuotteen_tiedot);
