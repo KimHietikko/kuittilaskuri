@@ -364,7 +364,7 @@ window.onload = function () {
                             isCampaign = true;
                         }
 
-                        if (!item.str.includes('----------')) {
+                        if (!item.str.includes('Yhteensä')) {
                             if (!item.str.includes(':')) {
                                 finalString += item.str + '\n';
                             }
@@ -373,9 +373,9 @@ window.onload = function () {
                                 campaignItemsList = list_campaign_items(i, textItems);
                             }
 
-                            if (item.str.includes('----------') && finalString != '') {
-                                break;
-                            }
+                            
+                            break;
+                            
                         }
                     }
 
