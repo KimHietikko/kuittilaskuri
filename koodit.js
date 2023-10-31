@@ -373,7 +373,9 @@ window.onload = function () {
                                 campaignItemsList = list_campaign_items(i, textItems);
                             }
 
-                            break;
+                            if (item.str.includes('----------') && finalString != '') {
+                                break;
+                            }
                         }
                     }
 
