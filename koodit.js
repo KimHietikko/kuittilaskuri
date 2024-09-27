@@ -93,7 +93,9 @@ window.onload = function () {
                             !tuotteen_tiedot.tuote.includes('PANTTI') &&
                             !tuotteen_tiedot.tuote.includes('ALENNUS') &&
                             !tuotteen_tiedot.hinta.includes('EUR/KG') &&
-                            !tuotteen_tiedot.hinta.includes('EUR/KPL')
+                            !tuotteen_tiedot.hinta.includes('EUR/KPL') &&
+                            !tuotteen_tiedot.hinta.includes('€/KG') &&
+                            !tuotteen_tiedot.hinta.includes('€/KPL')
                         ) {
                             lista.push(tuotteen_tiedot);
                         }
@@ -232,7 +234,7 @@ window.onload = function () {
                             isCampaign = true;
                         }
 
-                        if (!item.str.includes('Yhteensä')) {
+                        if (!item.str.toUpperCase().includes('YHTEENSÄ')) {
                             if (!item.str.includes(':')) {
                                 finalString += item.str + '\n';
                             }
