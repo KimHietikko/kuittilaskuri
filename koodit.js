@@ -397,7 +397,8 @@ window.onload = function () {
         for (let i = 0; i < lista.length; i++) {
             if (lista[i].tuote == document.getElementById('tuote' + i).textContent) {
                 var valittu = document.getElementsByName('checkbox' + i);
-                var valittuLaatu = document.getElementsByName('foodOrProduct' + i);
+                const row = document.getElementById(i);
+                const valittuLaatu = row.querySelectorAll('input[type="radio"]');
 
                 let checkedBoxes = 0;
 
