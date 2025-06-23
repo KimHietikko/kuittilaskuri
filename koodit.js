@@ -61,7 +61,7 @@ window.onload = function () {
 
                         // Lisää pantin edellisen tuotteen hintaan
                         if (tuotteen_tiedot.tuote.includes('PANTTI') && !tuotteen_tiedot.tuote.includes('PULLOPANTTI')) {
-                            lista[lista.length - 1].hinta = +lista[lista.length - 1].hinta + +tuotteen_tiedot.hinta;
+                            lista[lista.length - 1].hinta = (+lista[lista.length - 1].hinta + +parseFloat(tuotteen_tiedot.hinta)).toFixed(2);
                         }
 
                         // Lisää alennus edellisen tuotteen hintaan
@@ -149,40 +149,145 @@ window.onload = function () {
 
                         $('#' + taulukko).append(
                             '<td><p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '1 checked> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '1>Arkinen</p></input>' +
                                 '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '2> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '2>Herkku</p></input>' +
                                 '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '3> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
-                                '3>Tavara</p></input>' +
+                                '3>Käyttötavara</p></input>' +
                                 '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '4> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
-                                '4>Vaatteet</p></input>' +
+                                '4>Elektroniikka</p></input>' +
                                 '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
                                 '5> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
                                 taulukko +
-                                '5>Urheilu</p></input></td></tr>'
+                                '5>Lahja</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '6> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '6>Vaate</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '7> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '7>Urheilu</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '8> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '8>Alkoholi</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '9> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '9>Kauneus</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '10> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '10>Terveys</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '11> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '11>Vauvan arkinen</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '12> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '12>Vauvan käyttötavara</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '13> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '13>Vauvan vaate</p></input>' +
+                                '<p><input type=radio name=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                ' id=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '14> <label for=foodOrProduct' +
+                                lista[taulukko].tuote.trim().substring(0, 3) +
+                                taulukko +
+                                '14>Vauvan terveys</p></input></td></tr>'
                         );
                     }
                 });
@@ -303,9 +408,18 @@ window.onload = function () {
                             totalPrice: 0,
                             totalFood: 0,
                             totalSweets: 0,
+                            totalProducts: 0,
+                            totalElectronics: 0,
+                            totalGifts: 0,
                             totalClothes: 0,
                             totalSports: 0,
-                            totalProducts: 0
+                            totalAlcohol: 0,
+                            totalBeauty: 0,
+                            totalHealth: 0,
+                            totalBabyFood: 0,
+                            totalBabyProducts: 0,
+                            totalBabyClothes: 0,
+                            totalBabyHealth: 0
                         });
                     }
                     if (valittu[radiolista].checked) {
@@ -345,7 +459,7 @@ window.onload = function () {
                                                 array.totalSweets = +array.totalSweets - +parseFloat(lista[i].hinta) / checkedBoxes;
                                             }
                                         }
-                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Tavara') {
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Käyttötavara') {
                                             if (array.person === 'Yhteinen') {
                                                 yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
 
@@ -358,7 +472,33 @@ window.onload = function () {
                                                 array.totalProducts = +array.totalProducts - +parseFloat(lista[i].hinta) / checkedBoxes;
                                             }
                                         }
-                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vaatteet') {
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Elektroniikka') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalElectronics = person.totalElectronics - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalElectronics = +array.totalElectronics - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Lahja') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalGifts = person.totalGifts - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalGifts = +array.totalGifts - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vaate') {
                                             if (array.person === 'Yhteinen') {
                                                 yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
 
@@ -382,6 +522,97 @@ window.onload = function () {
                                                 });
                                             } else {
                                                 array.totalSports = +array.totalSports - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Alkoholi') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalAlcohol = person.totalAlcohol - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalAlcohol = +array.totalAlcohol - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Kauneus') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBeauty = person.totalBeauty - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBeauty = +array.totalBeauty - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Terveys') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalHealth = person.totalHealth - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalHealth = +array.totalHealth - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan arkinen') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyFood = person.totalBabyFood - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyFood = +array.totalBabyFood - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan käyttötavara') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyProducts = person.totalBabyProducts - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyProducts = +array.totalBabyProducts - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan vaate') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyClothes = person.totalBabyClothes - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyClothes = +array.totalBabyClothes - +parseFloat(lista[i].hinta) / checkedBoxes;
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan terveys') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +parseFloat(lista[i].hinta) / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyHealth = person.totalBabyHealth - +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyHealth = +array.totalBabyHealth - +parseFloat(lista[i].hinta) / checkedBoxes;
                                             }
                                         }
                                     });
@@ -414,7 +645,7 @@ window.onload = function () {
                                                 array.totalSweets = +array.totalSweets + +(lista[i].hinta / checkedBoxes);
                                             }
                                         }
-                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Tavara') {
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Käyttötavara') {
                                             if (array.person === 'Yhteinen') {
                                                 yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
 
@@ -427,7 +658,33 @@ window.onload = function () {
                                                 array.totalProducts = +array.totalProducts + +(lista[i].hinta / checkedBoxes);
                                             }
                                         }
-                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vaatteet') {
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Elektroniikka') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalElectronics = person.totalElectronics + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalElectronics = +array.totalElectronics + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Lahja') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalGifts = person.totalGifts + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalGifts = +array.totalGifts + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vaate') {
                                             if (array.person === 'Yhteinen') {
                                                 yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
 
@@ -451,6 +708,97 @@ window.onload = function () {
                                                 });
                                             } else {
                                                 array.totalSports = +array.totalSports + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Alkoholi') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalAlcohol = person.totalAlcohol + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalAlcohol = +array.totalAlcohol + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Kauneus') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBeauty = person.totalBeauty + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBeauty = +array.totalBeauty + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Terveys') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalHealth = person.totalHealth + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalHealth = +array.totalHealth + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan arkinen') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyFood = person.totalBabyFood + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyFood = +array.totalBabyFood + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan käyttötavara') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyProducts = person.totalBabyProducts + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyProducts = +array.totalBabyProducts + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan vaate') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyClothes = person.totalBabyClothes + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyClothes = +array.totalBabyClothes + +(lista[i].hinta / checkedBoxes);
+                                            }
+                                        }
+                                        if (laatu.checked && laatu.parentNode.textContent.trim() === 'Vauvan terveys') {
+                                            if (array.person === 'Yhteinen') {
+                                                yhteinenOsuusYhdelle = +lista[i].hinta / radioButtonPersons;
+
+                                                peopleAndPrices.forEach(person => {
+                                                    if (person.person !== 'Yhteinen') {
+                                                        person.totalBabyHealth = person.totalBabyHealth + +yhteinenOsuusYhdelle;
+                                                    }
+                                                });
+                                            } else {
+                                                array.totalBabyHealth = +array.totalBabyHealth + +(lista[i].hinta / checkedBoxes);
                                             }
                                         }
                                     });
@@ -480,38 +828,83 @@ window.onload = function () {
                     results +
                     '<div><p>' +
                     person.person +
-                    ' arkiset: ' +
-                    person.totalFood.toFixed(2) +
+                    ' arkinen: ' +
+                    person.totalFood.toFixed(3) +
                     '</p>' +
                     '<p>' +
                     person.person +
-                    ' herkut: ' +
-                    person.totalSweets.toFixed(2) +
+                    ' herkku: ' +
+                    person.totalSweets.toFixed(3) +
                     '</p>' +
                     '<p>' +
                     person.person +
-                    ' tavarat: ' +
-                    person.totalProducts.toFixed(2) +
+                    ' käyttötavara: ' +
+                    person.totalProducts.toFixed(3) +
                     '</p>' +
                     '<p>' +
                     person.person +
-                    ' vaatteet: ' +
-                    person.totalClothes.toFixed(2) +
+                    ' elektroniikka: ' +
+                    person.totalElectronics.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' lahja: ' +
+                    person.totalGifts.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' vaate: ' +
+                    person.totalClothes.toFixed(3) +
                     '</p>' +
                     '<p>' +
                     person.person +
                     ' urheilu: ' +
-                    person.totalSports.toFixed(2) +
+                    person.totalSports.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' alkoholi: ' +
+                    person.totalAlcohol.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' kauneus: ' +
+                    person.totalBeauty.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' terveys: ' +
+                    person.totalHealth.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' vauvan arkinen: ' +
+                    person.totalBabyFood.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' vauvan käyttötavara: ' +
+                    person.totalBabyProducts.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' vauvan vaate: ' +
+                    person.totalBabyClothes.toFixed(3) +
+                    '</p>' +
+                    '<p>' +
+                    person.person +
+                    ' vauvan terveys: ' +
+                    person.totalBabyHealth.toFixed(3) +
                     '</p>' +
                     '<strong><p>' +
                     person.person +
                     ' yhteensä: ' +
-                    person.totalPrice.toFixed(2) +
+                    person.totalPrice.toFixed(3) +
                     '</strong></p></div>';
             }
         });
 
         $('#tulos').append(results);
-        $('#tulos').append('<strong><p id=Yhteensa>' + 'Yhteensä: ' + Yhteensa.toFixed(2) + '</p></strong>');
+        $('#tulos').append('<strong><p id=Yhteensa>' + 'Yhteensä: ' + Yhteensa.toFixed(3) + '</p></strong>');
     }
 };
